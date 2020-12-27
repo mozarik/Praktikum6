@@ -7,9 +7,9 @@ import numpy as np
 import os
 import glob
 
-files = glob.glob('/YOUR/PATH/*')
-for f in files:
-    os.remove(f)
+# files = glob.glob('/YOUR/PATH/*')
+# for f in files:
+#     os.remove(f)
 
 # Image form https://www.kaggle.com/mbkinaci/fruit-images-for-object-detection
 
@@ -23,7 +23,7 @@ DEFAULT_IMG_DIR = "./img/train/"
 # ---
 def convertAllImageToJpg(directory, conv_dir):
     for index, filename in enumerate(os.listdir(directory)):
-        if filename.endswith(".jpg") and index < 16:
+        if filename.endswith(".jpg", ".png") and index < 16:
             image = Image.open(directory+filename)
             image.convert('RGB').save(conv_dir + filename)
             index += 1
