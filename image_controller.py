@@ -67,6 +67,50 @@ def resizeToNIM(img):
     return image_s
 
 
+# Rotate image 90 Derajat Clockwise
+def rotateImg90Degree(img):
+    if isinstance(img, np.ndarray):
+        image = img
+    else:
+        image = cv2.imread(img)
+    image_90Degree = cv2.rotate(image, cv2.ROTATE_90_CLOCKWISE)
+    return image_90Degree
+
+
+# Rotate image 180 of type file image directory or type np.ndarray
+def rotateImg180Degree(img):
+    if isinstance(img, np.ndarray):
+        image = img
+    else:
+        image = cv2.imread(img)
+    image_180Degree = cv2.rotate(image, cv2.ROTATE_180)
+    return image_180Degree
+
+
+# Rotate image 270 of type file image directory or type np.ndarray
+def rotateImg270Degree(img):
+    if isinstance(img, np.ndarray):
+        image = img
+    else:
+        image = cv2.imread(img)
+    image_270Degree = cv2.rotate(image, cv2.ROTATE_90_COUNTERCLOCKWISE)
+    return image_270Degree
+
+
+# Rotate image 360 of type file image directory or type np.ndarray
+def rotateImg360Degree(img):
+    if isinstance(img, np.ndarray):
+        image = img
+    else:
+        image = cv2.imread(img)
+    return image
+
+
+# check if ob is intansce of type
+def isclass(obj):
+    return isinstance(obj, type)
+
+
 if __name__ == "__main__":
     convertAllImageToJpg(IMG_PLYGROUND_DIR, CONVERTERD_IMG_DIR)
     # emptyTheDir(CONVERTERD_IMG_DIR)
