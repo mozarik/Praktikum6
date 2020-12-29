@@ -23,7 +23,7 @@ DEFAULT_IMG_DIR = "./img/train/"
 # ---
 def convertAllImageToJpg(directory, conv_dir):
     for index, filename in enumerate(os.listdir(directory)):
-        if filename.endswith(".jpg", ".png") and index < 16:
+        if (filename.endswith(".jpg") or filename.endswith(".png")) and index < 16:
             image = Image.open(directory+filename)
             image.convert('RGB').save(conv_dir + filename)
             index += 1
