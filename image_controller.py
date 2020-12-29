@@ -61,9 +61,12 @@ def listOfImageObj(directory):
 
 # Return cv2.img.obj with size of your NIM
 # ----
-def resizeToNIM(img):
-    image = cv2.imread(img)
-    image_s = cv2.resize(image, dsize=(2018, 344))
+def resizeToNIM(img, angkatan=2018, nim=344):
+    if isinstance(img, np.ndarray):
+        image = img
+    else:
+        image = cv2.imread(img)
+    image_s = cv2.resize(image, dsize=(angkatan, nim))
     return image_s
 
 
@@ -109,6 +112,22 @@ def rotateImg360Degree(img):
 # check if ob is intansce of type
 def isclass(obj):
     return isinstance(obj, type)
+
+
+# this function take cv2.imread Obj, manipulate it, and return 4concat image
+# with original and their RGB split
+def imagePerRGB(img):
+    blue, green, red = cv2.split(img)
+    zeros = np.zeros(blue.shape, np.uint8)
+
+    blueRGB = cv2.merge((blue, zeros, zeros))
+    greenRGB = cv2.merge((zeros, green, zeros))
+    redRGB = cv2.merge((zeros, zeros, red))
+
+    image_gabung = concat_tile([[img, blueRGB],
+                                [greenRGB, redRGB]])
+
+    return image_gabung
 
 
 if __name__ == "__main__":
